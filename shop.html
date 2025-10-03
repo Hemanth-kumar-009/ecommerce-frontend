@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>E-Shop | Shop</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html" class="logo">E-Shop</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">Cart (<span class="cart-badge">0</span>)</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Shop Products</h1>
+
+    <!-- Search + Filter -->
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="Search products...">
+      <select id="categoryFilter">
+        <option value="all">All Categories</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Accessories">Accessories</option>
+      </select>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="productList" class="grid"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 E-Shop. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/shop.js"></script>
+</body>
+</html>
