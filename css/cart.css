@@ -3,16 +3,19 @@ body
     margin: 0;
     font-family: 'Lato', sans-serif;
 }
+
 #cartMainContainer
 {
     padding: 90px 50px;
 }
+
 #cartContainer
 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
 }
+
 img
 {
     width: 80px;
@@ -20,27 +23,30 @@ img
     border-radius: 10px;
     margin-right: 50px;
 }
+
 #boxContainer
 {
     display: grid;
     grid-gap: 20px;
     padding: 20px;
     width: 100%;
-    /* float: left; */
 }
+
 #box
 {
     background-color: white;
     box-shadow: 1px 2px 6px 2px rgb(219, 219, 219);
     border-radius: 10px;
     width: 100%;
-    /* margin: auto */
     padding: 20px 10px;
 }
+
 #box:hover
 {
     box-shadow: 0px 1px 3px 2px rgb(185, 185, 185);
 }
+
+/* --- Modified totalContainer to be centered at 60% of the screen vertically --- */
 #totalContainer
 {
     width: 50%;
@@ -49,11 +55,18 @@ img
     background-color: white;
     border-radius: 10px;
     box-shadow: 1px 2px 6px 2px rgb(219, 219, 219);
+
+    position: absolute;
+    left: 50%;
+    top: 90vh;
+    transform: translate(-50%, -50%);
 }
+
 #totalContainer:hover
 {
     box-shadow: 0px 1px 3px 2px rgb(185, 185, 185);
 }
+
 button
 {
     padding: 8px 12px;
@@ -98,6 +111,12 @@ button a:focus
     {
         padding: 90px 20px;
     }
+    #totalContainer {
+        width: 80%;
+        left: 50%;
+        top: 65vh;
+        transform: translate(-50%, -50%);
+    }
 }
 @media(max-width: 555px)
 {
@@ -110,5 +129,12 @@ button a:focus
     {
         padding: 20px;
         width: 80%;
+    }
+    #totalContainer {
+        width: 96vw;
+        left: 50%;
+        top: 70vh;
+        transform: translate(-50%, -50%);
+        padding: 14px;
     }
 }

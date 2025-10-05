@@ -15,7 +15,7 @@ body
 }
 #container
 {
-    background-color: white;
+    background-color: #d9e0c6; /* dark gray background */
     margin: auto;
     text-align: center;
     width: 100%;
@@ -30,6 +30,9 @@ body
     box-sizing: border-box;
     position: fixed;
     box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 2px 6px 2px rgba(60, 64, 67, 0.149); 
+    
+    /* Set whole header label color to inherit or you can define here as needed */
+    color: #555; /* optional for text color */
 }
 #shopName 
 {
@@ -39,7 +42,7 @@ body
 #shopName a
 {
     text-decoration: none;
-    color: rgb(29, 29, 29);
+    color: inherit; /* inherit from container */
 }
 #shopName > b
 {
@@ -56,14 +59,13 @@ body
 #collection a
 {
     text-decoration: none;
-    color: rgb(29, 29, 29);
+    color: inherit; /* inherit gray from container */
 }
 
 .search
 {
     padding: 14px;
-    /* color: gray; */
-    color: rgb(29, 29, 29);
+    color: inherit; /* inherit gray */
     min-width: 25px;
     text-align: center;
     position: absolute;
@@ -73,17 +75,18 @@ body
 {
     font-size: 1.5em;
     margin-right: 25px;
+    color: inherit; /* inherit gray */
 }
 #user
 {
     display: flex;
-    /* float: right; */
     align-items: center;
 }
 
 .userIcon
 {
     font-size: 45px;
+    color: inherit; /* inherit gray */
 }
 #input 
 {
@@ -93,10 +96,12 @@ body
     background-color: rgb(241, 241, 241);
     border: none;
     border-radius: 5px;
+    color: black; /* keep input text black */
 }
 #input::placeholder
 {
     font-weight: bold;
+    color: #777; /* gray placeholder */
 }
 #input:focus
 {
@@ -104,7 +109,7 @@ body
 }
 #user a
 {
-    color: rgb(29, 29, 29)
+    color: inherit; /* inherit gray */
 }
 
 /* ----------------------------- MEDIA QUERY --------------------------- */

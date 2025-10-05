@@ -1,36 +1,26 @@
-// console.clear();
-
-let contentTitle;
-
-console.log(document.cookie);
 function dynamicClothingSection(ob) {
   let boxDiv = document.createElement("div");
   boxDiv.id = "box";
 
+  // Corrected link to use ?id=...
   let boxLink = document.createElement("a");
-  // boxLink.href = '#'
-  boxLink.href = "/contentDetails.html?" + ob.id;
-  // console.log('link=>' + boxLink);
+  boxLink.href = "contentDetails.html?id=" + ob.id;
 
+  // Updated to use correct image paths based on your folder structure
   let imgTag = document.createElement("img");
-  // imgTag.id = 'image1'
-  // imgTag.id = ob.photos
   imgTag.src = ob.preview;
 
   let detailsDiv = document.createElement("div");
   detailsDiv.id = "details";
 
   let h3 = document.createElement("h3");
-  let h3Text = document.createTextNode(ob.name);
-  h3.appendChild(h3Text);
+  h3.textContent = ob.name;
 
   let h4 = document.createElement("h4");
-  let h4Text = document.createTextNode(ob.brand);
-  h4.appendChild(h4Text);
+  h4.textContent = ob.brand;
 
   let h2 = document.createElement("h2");
-  let h2Text = document.createTextNode("rs  " + ob.price);
-  h2.appendChild(h2Text);
+  h2.textContent = "Rs " + ob.price;
 
   boxDiv.appendChild(boxLink);
   boxLink.appendChild(imgTag);
@@ -42,50 +32,104 @@ function dynamicClothingSection(ob) {
   return boxDiv;
 }
 
-//  TO SHOW THE RENDERED CODE IN CONSOLE
-// console.log(dynamicClothingSection());
+// All preview paths use your folder structure (e.g., img/img5.jpg/image51.jpg)
+let contentTitle = [
+  {
+    id: 1,
+    name: "Men Navy Blue Solid Sweatshirt",
+    preview: "img/img5.jpg/image51.jpg",
+    brand: "United Colors Of Benetton",
+    price: 2599,
+    isAccessory: false
+  },
+  {
+    id: 2,
+    name: "Men Black MAMGP T7 Sweat Sporty Jacket",
+    preview: "img/img6.jpg/image61.jpg",
+    brand: "Puma",
+    price: 7999,
+    isAccessory: false
+  },
+  {
+    id: 3,
+    name: "Women Black Solid Lightweight Leather Jacket",
+    preview: "img/img7.jpg/image71.jpg",
+    brand: "BARESKIN",
+    price: 9999,
+    isAccessory: false
+  },
+  {
+    id: 4,
+    name: "Men Brown Leather Jacket",
+    preview: "img/img8.jpg/image81.jpg",
+    brand: "Woodland",
+    price: 8500,
+    isAccessory: false
+  },
+  {
+    id: 5,
+    name: "Women Blue Solid Shirt Dress",
+    preview: "img/img9.jpg/image91.jpg",
+    brand: "SASSAFRAS",
+    price: 5200,
+    isAccessory: false
+  },
+  {
+    id: 6,
+    name: "Unisex Silver-Toned Series 3 Smart Watch",
+    preview: "img/img10.jpg",
+    brand: "Apple",
+    price: 31999,
+    isAccessory: true
+  },
+  {
+    id: 7,
+    name: "Women Black Strappy Heels",
+    preview: "img/img11.jpg",
+    brand: "Fossil",
+    price: 4599,
+    isAccessory: true
+  },
+  {
+    id: 8,
+    name: "Men Black Action Parkview Shoes",
+    preview: "img/img12.jpg",
+    brand: "Hush Puppies",
+    price: 6999,
+    isAccessory: true
+  },
+  {
+    id: 9,
+    name: "Leather Handbag",
+    preview: "img/img13.jpg",
+    brand: "Caprese",
+    price: 3999,
+    isAccessory: true
+  },
+  {
+    id: 10,
+    name: "Sport Bluetooth Earphones",
+    preview: "img/img14.jpg",
+    brand: "Realme",
+    price: 2999,
+    isAccessory: true
+  }
+];
 
-// console.log(boxDiv)
-
-let mainContainer = document.getElementById("mainContainer");
 let containerClothing = document.getElementById("containerClothing");
 let containerAccessories = document.getElementById("containerAccessories");
-// mainContainer.appendChild(dynamicClothingSection('hello world!!'))
 
-// BACKEND CALLING
+containerClothing.innerHTML = "";
+containerAccessories.innerHTML = "";
 
-let httpRequest = new XMLHttpRequest();
-
-httpRequest.onreadystatechange = function() {
-  if (this.readyState === 4) {
-    if (this.status == 200) {
-      // console.log('call successful');
-      contentTitle = JSON.parse(this.responseText);
-      if (document.cookie.indexOf(",counter=") >= 0) {
-        var counter = document.cookie.split(",")[1].split("=")[1];
-        document.getElementById("badge").innerHTML = counter;
-      }
-      for (let i = 0; i < contentTitle.length; i++) {
-        if (contentTitle[i].isAccessory) {
-          console.log(contentTitle[i]);
-          containerAccessories.appendChild(
-            dynamicClothingSection(contentTitle[i])
-          );
-        } else {
-          console.log(contentTitle[i]);
-          containerClothing.appendChild(
-            dynamicClothingSection(contentTitle[i])
-          );
-        }
-      }
-    } else {
-      console.log("call failed!");
-    }
+for (let i = 0; i < contentTitle.length; i++) {
+  if (contentTitle[i].isAccessory) {
+    containerAccessories.appendChild(
+      dynamicClothingSection(contentTitle[i])
+    );
+  } else {
+    containerClothing.appendChild(
+      dynamicClothingSection(contentTitle[i])
+    );
   }
-};
-httpRequest.open(
-  "GET",
-  "https://5d76bf96515d1a0014085cf9.mockapi.io/product",
-  true
-);
-httpRequest.send();
+}
